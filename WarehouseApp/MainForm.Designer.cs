@@ -48,7 +48,7 @@
             dgvProducts.RowHeadersWidth = 51;
             dgvProducts.Size = new Size(832, 576);
             dgvProducts.TabIndex = 0;
-            dgvProducts.CellContentClick += dataGridView1_CellContentClick;
+
             // 
             // label1
             // 
@@ -58,7 +58,7 @@
             label1.Size = new Size(58, 20);
             label1.TabIndex = 1;
             label1.Text = "Пошук:";
-            label1.Click += label1_Click;
+            
             // 
             // txtSearch
             // 
@@ -120,7 +120,7 @@
             btnSave.TabIndex = 9;
             btnSave.Text = "Зберегти";
             btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
+            
             // 
             // MainForm
             // 
@@ -138,6 +138,7 @@
             Controls.Add(dgvProducts);
             Name = "MainForm";
             Text = "Склад";
+            
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             ResumeLayout(false);
             PerformLayout();
