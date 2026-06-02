@@ -43,7 +43,7 @@
             // dgvProducts
             // 
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(279, 57);
+            dgvProducts.Location = new Point(274, 57);
             dgvProducts.Name = "dgvProducts";
             dgvProducts.RowHeadersWidth = 51;
             dgvProducts.Size = new Size(832, 576);
@@ -124,6 +124,7 @@
             btnSave.TabIndex = 9;
             btnSave.Text = "Зберегти";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // MainForm
             // 

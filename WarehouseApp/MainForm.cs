@@ -10,14 +10,22 @@ namespace WarehouseApp
     public partial class MainForm : Form
     {
         private WarehouseService warehouseService;
-
+        private FileService fileService;
         public MainForm()
         {
             InitializeComponent();
 
             warehouseService = new WarehouseService();
+            fileService = new FileService();
 
-            LoadTestData();
+            warehouseService.Products = fileService.LoadProducts();
+            warehouseService.Invoices = fileService.LoadInvoices();
+
+            if (warehouseService.Products.Count == 0)
+            {
+                LoadTestData();
+            }
+
             RefreshProductsGrid();
         }
 
@@ -180,6 +188,20 @@ namespace WarehouseApp
 
                 RefreshProductsGrid();
             }
+
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            fileService.SaveProducts(warehouseService.Products);
+            fileService.SaveInvoices(warehouseService.Invoices);
+
+            MessageBox.Show(
+                "Дані успішно збережено!",
+                "Збереження",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }
