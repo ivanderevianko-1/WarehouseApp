@@ -60,6 +60,13 @@ namespace WarehouseApp
             dgvProducts.DataSource = warehouseService.Products;
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgvProducts.DataSource = null;
+            dgvProducts.DataSource =
+                warehouseService.SearchProducts(txtSearch.Text);
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ProductForm form = new ProductForm();
@@ -89,6 +96,12 @@ namespace WarehouseApp
             warehouseService.RemoveProduct(product.Id);
 
             RefreshProductsGrid();
+        }
+
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            dgvProducts.DataSource = null;
+            dgvProducts.DataSource = warehouseService.SearchProducts(txtSearch.Text);
         }
     }
 }
