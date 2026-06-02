@@ -104,6 +104,7 @@
             btnReceive.TabIndex = 7;
             btnReceive.Text = "Надходження";
             btnReceive.UseVisualStyleBackColor = true;
+            btnReceive.Click += btnReceive_Click;
             // 
             // btnShip
             // 
@@ -113,6 +114,7 @@
             btnShip.TabIndex = 8;
             btnShip.Text = "Відвантаження";
             btnShip.UseVisualStyleBackColor = true;
+            btnShip.Click += btnShip_Click;
             // 
             // btnSave
             // 

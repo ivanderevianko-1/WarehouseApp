@@ -124,6 +124,63 @@ namespace WarehouseApp
                 RefreshProductsGrid();
             }
         }
+
+        private void btnReceive_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow == null)
+                return;
+
+            Product? product =
+                dgvProducts.CurrentRow.DataBoundItem as Product;
+
+            if (product == null)
+                return;
+
+            TransactionForm form = new TransactionForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                warehouseService.ReceiveProduct(
+                    product.Id,
+                    form.Quantity);
+
+                RefreshProductsGrid();
+            }
+        }
+
+        private void btnShip_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow == null)
+                return;
+
+            Product? product =
+                dgvProducts.CurrentRow.DataBoundItem as Product;
+
+            if (product == null)
+                return;
+
+            TransactionForm form = new TransactionForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                bool success = warehouseService.ShipProduct(
+                    product.Id,
+                    form.Quantity);
+
+                if (!success)
+                {
+                    MessageBox.Show(
+                        "Недостатньо товару на складі.",
+                        "Помилка",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                RefreshProductsGrid();
+            }
+        }
     }
 }
 
