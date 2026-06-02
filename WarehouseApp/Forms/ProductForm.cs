@@ -23,6 +23,19 @@ namespace WarehouseApp.Forms
             Product = new Product();
         }
 
+        public ProductForm(Product product)
+        {
+            InitializeComponent();
+
+            Product = product;
+
+            txtName.Text = product.Name;
+            txtUnit.Text = product.Unit;
+            txtPrice.Text = product.Price.ToString();
+            txtQuantity.Text = product.Quantity.ToString();
+            dtpDeliveryDate.Value = product.LastDeliveryDate;
+        }
+
         private void btnOk_Click(object sender, EventArgs e)
         {
             Product.Name = txtName.Text;

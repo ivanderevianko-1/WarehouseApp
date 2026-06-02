@@ -103,5 +103,27 @@ namespace WarehouseApp
             dgvProducts.DataSource = null;
             dgvProducts.DataSource = warehouseService.SearchProducts(txtSearch.Text);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow == null)
+                return;
+
+            Product? product =
+                dgvProducts.CurrentRow.DataBoundItem as Product;
+
+            if (product == null)
+                return;
+
+            ProductForm form = new ProductForm(product);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                warehouseService.UpdateProduct(form.Product);
+
+                RefreshProductsGrid();
+            }
+        }
     }
 }
+
