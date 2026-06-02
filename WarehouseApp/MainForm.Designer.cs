@@ -48,7 +48,6 @@
             dgvProducts.RowHeadersWidth = 51;
             dgvProducts.Size = new Size(832, 576);
             dgvProducts.TabIndex = 0;
-
             // 
             // label1
             // 
@@ -58,7 +57,6 @@
             label1.Size = new Size(58, 20);
             label1.TabIndex = 1;
             label1.Text = "Пошук:";
-            
             // 
             // txtSearch
             // 
@@ -75,6 +73,7 @@
             btnAdd.TabIndex = 4;
             btnAdd.Text = "Додати";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnEdit
             // 
@@ -120,7 +119,6 @@
             btnSave.TabIndex = 9;
             btnSave.Text = "Зберегти";
             btnSave.UseVisualStyleBackColor = true;
-            
             // 
             // MainForm
             // 
@@ -138,7 +136,6 @@
             Controls.Add(dgvProducts);
             Name = "MainForm";
             Text = "Склад";
-            
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             ResumeLayout(false);
             PerformLayout();

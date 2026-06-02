@@ -1,5 +1,9 @@
+using System;
+using System.Windows.Forms;
 using WarehouseApp.Models;
 using WarehouseApp.Services;
+using WarehouseApp.Forms;
+
 
 namespace WarehouseApp
 {
@@ -54,6 +58,22 @@ namespace WarehouseApp
         {
             dgvProducts.DataSource = null;
             dgvProducts.DataSource = warehouseService.Products;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ProductForm form = new ProductForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Product product = form.Product;
+
+                product.Id = warehouseService.Products.Count + 1;
+
+                warehouseService.AddProduct(product);
+
+                RefreshProductsGrid();
+            }
         }
     }
 }
