@@ -75,5 +75,20 @@ namespace WarehouseApp
                 RefreshProductsGrid();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow == null)
+                return;
+
+            Product? product = dgvProducts.CurrentRow.DataBoundItem as Product;
+
+            if (product == null)
+                return;
+
+            warehouseService.RemoveProduct(product.Id);
+
+            RefreshProductsGrid();
+        }
     }
 }
