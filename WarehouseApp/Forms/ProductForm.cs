@@ -38,10 +38,54 @@ namespace WarehouseApp.Forms
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show(
+                    "Введіть назву товару.",
+                    "Помилка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtUnit.Text))
+            {
+                MessageBox.Show(
+                    "Введіть одиницю виміру.",
+                    "Помилка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (!decimal.TryParse(txtPrice.Text, out decimal price) || price <= 0)
+            {
+                MessageBox.Show(
+                    "Ціна повинна бути більшою за 0.",
+                    "Помилка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity < 0)
+            {
+                MessageBox.Show(
+                    "Кількість не може бути від'ємною.",
+                    "Помилка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
             Product.Name = txtName.Text;
             Product.Unit = txtUnit.Text;
-            Product.Price = decimal.Parse(txtPrice.Text);
-            Product.Quantity = int.Parse(txtQuantity.Text);
+            Product.Price = price;
+            Product.Quantity = quantity;
             Product.LastDeliveryDate = dtpDeliveryDate.Value;
 
             DialogResult = DialogResult.OK;
@@ -52,6 +96,11 @@ namespace WarehouseApp.Forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void ProductForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

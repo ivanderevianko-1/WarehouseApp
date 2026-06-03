@@ -67,11 +67,11 @@ namespace WarehouseApp
             dgvProducts.DataSource = null;
             dgvProducts.DataSource = warehouseService.Products;
             dgvProducts.Columns["Id"].HeaderText = "Код";
-            dgvProducts.Columns["Name"].HeaderText = "Назва";
-            dgvProducts.Columns["Unit"].HeaderText = "Одиниця";
-            dgvProducts.Columns["Price"].HeaderText = "Ціна";
-            dgvProducts.Columns["Quantity"].HeaderText = "Кількість";
-            dgvProducts.Columns["LastDeliveryDate"].HeaderText = "Дата надходження";
+dgvProducts.Columns["Name"].HeaderText = "Назва";
+dgvProducts.Columns["Unit"].HeaderText = "Одиниця";
+dgvProducts.Columns["Price"].HeaderText = "Ціна";
+dgvProducts.Columns["Quantity"].HeaderText = "Кількість";
+dgvProducts.Columns["LastDeliveryDate"].HeaderText = "Дата надходження";
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -106,7 +106,16 @@ namespace WarehouseApp
 
             if (product == null)
                 return;
+            DialogResult result = MessageBox.Show(
+                                                  "Ви дійсно бажаєте видалити цей товар?",
+                                                  "Підтвердження видалення",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
             warehouseService.RemoveProduct(product.Id);
 
             RefreshProductsGrid();

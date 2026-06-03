@@ -165,6 +165,7 @@
             Name = "ProductForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Додавання товару";
+            Load += ProductForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
