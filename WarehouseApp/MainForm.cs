@@ -203,6 +203,12 @@ namespace WarehouseApp
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
+        private void btnInvoices_Click(object sender, EventArgs e)
+        {
+            InvoicesForm form = new InvoicesForm(warehouseService.Invoices);
+            form.ShowDialog();
+        }
     }
 }
 

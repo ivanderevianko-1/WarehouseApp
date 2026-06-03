@@ -37,6 +37,7 @@
             btnReceive = new Button();
             btnShip = new Button();
             btnSave = new Button();
+            btnInvoices = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
             // 
@@ -126,11 +127,22 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // btnInvoices
+            // 
+            btnInvoices.Location = new Point(12, 562);
+            btnInvoices.Name = "btnInvoices";
+            btnInvoices.Size = new Size(125, 31);
+            btnInvoices.TabIndex = 10;
+            btnInvoices.Text = "Накладні";
+            btnInvoices.UseVisualStyleBackColor = true;
+            btnInvoices.Click += btnInvoices_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1175, 667);
+            Controls.Add(btnInvoices);
             Controls.Add(btnSave);
             Controls.Add(btnShip);
             Controls.Add(btnReceive);
@@ -158,5 +170,6 @@
         private Button btnReceive;
         private Button btnShip;
         private Button btnSave;
+        private Button btnInvoices;
     }
 }
