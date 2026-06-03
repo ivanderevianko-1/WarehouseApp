@@ -20,6 +20,13 @@ namespace WarehouseApp.Forms
 
             dgvInvoices.DataSource = null;
             dgvInvoices.DataSource = invoices;
+
+            dgvInvoices.Columns["Id"].HeaderText = "Код";
+            dgvInvoices.Columns["Type"].HeaderText = "Тип";
+            dgvInvoices.Columns["Date"].HeaderText = "Дата";
+            dgvInvoices.Columns["ProductName"].HeaderText = "Товар";
+            dgvInvoices.Columns["Quantity"].HeaderText = "Кількість";
+            dgvInvoices.Columns["Comment"].Visible = false;
         }
         private void dgvInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
